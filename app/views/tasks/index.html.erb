@@ -1,0 +1,17 @@
+
+<div class="container">
+    <h1 class="mt-4">My tasks</h1>
+
+    <ul>
+        <% @tasks.each do |task| %>
+          <li>
+              <%= link_to task_path(task) do %>
+              <i class="fa-regular fa-square-check p-2"></i><% task.completed %><%= task.title %>
+              <% end %>
+              <%= link_to `${<i class='fa-regular fa-trash-can'></i>}`, task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          </li>
+        <% end %>
+    </ul>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Add a new task", new_task_path  %></button>
+
+</div>
